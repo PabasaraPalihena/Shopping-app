@@ -10,14 +10,18 @@ const Product = new Schema({
     type: String,
     require: true,
   },
-  Price: {
+  price: {
     type: Number,
   },
-  availableQty: {
+  qty: {
     type: Number,
   },
   productSize: {
     type: String,
+  },
+  sampleImages: {
+    type: String,
+    default: "no-photo.jpg",
   },
 });
 const product = mongoose.model("Product", Product);
