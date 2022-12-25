@@ -9,7 +9,7 @@ export default function Header({ title }) {
         <div className="header__component">
           <div className="header__left">
             <div>
-              <p>LayoutIndex Shopping App</p>
+              <p>Layout Index</p>
               <p>{title}</p>
             </div>
             <div className="header__buttonGroup">
