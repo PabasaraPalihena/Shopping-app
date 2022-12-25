@@ -8,13 +8,13 @@
   }
   
   .header__left p:nth-child(1) {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 200;
     margin: 0px 0px 0px 5px;
     color: rgb(77, 77, 77);
   }
   .header__left p:nth-child(2) {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 900;
     margin: 0px;
     color: rgb(60, 60, 60);
