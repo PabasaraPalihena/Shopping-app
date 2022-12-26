@@ -16,3 +16,9 @@ const PORT = process.env.PORT || 5005;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Route files
+const product = require("./routes/Product");
+
+// Mount routers
+app.use("/api/v1/product", product);

@@ -19,16 +19,16 @@ const Product = new Schema({
   price: {
     type: Number,
   },
-  qty: {
-    type: Number,
-  },
-  productSize: {
-    type: String,
-  },
-  sampleImage: {
-    type: String,
-    default: "no-photo.jpg",
-  },
+  // qty: {
+  //   type: Number,
+  // },
+  // productSize: {
+  //   type: String,
+  // },
+  // sampleImage: {
+  //   type: String,
+  //   default: "no-photo.jpg",
+  // },
 });
 const product = mongoose.model("Product", Product);
 module.exports = product;
