@@ -1,5 +1,5 @@
 import React from "react";
-// import "./Dashboard.css";
+import "./Dashboard.css";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -58,7 +58,13 @@ export default function Dashboard() {
       >
         <Typography paragraph>
           <div>
-            <img src="xmas.jpg" />
+            <img
+              className="center"
+              // src="https://png.pngtree.com/background/20210714/original/pngtree-merry-christmas-banner-template-picture-image_1222678.jpg"
+              // src="https://thumbs.dreamstime.com/z/merry-christmas-card-cartoon-hand-drawn-style-vector-illustration-merry-christmas-card-cartoon-hand-drawn-style-164602729.jpg"
+              src="https://png.pngtree.com/background/20210714/original/pngtree-merry-christmas-snowy-background-picture-image_1253397.jpg"
+              height={380}
+            />
           </div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus

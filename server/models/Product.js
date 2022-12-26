@@ -10,6 +10,12 @@ const Product = new Schema({
     type: String,
     require: true,
   },
+  category: {
+    type: String,
+  },
+  subcategory: {
+    type: String,
+  },
   price: {
     type: Number,
   },
@@ -19,7 +25,7 @@ const Product = new Schema({
   productSize: {
     type: String,
   },
-  sampleImages: {
+  sampleImage: {
     type: String,
     default: "no-photo.jpg",
   },

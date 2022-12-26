@@ -8,6 +8,7 @@ import {
 import Header from "./components/view/Header";
 import Footer from "./components/view/Footer";
 import Dashboard from "./components/Admin/Dashboard";
+import AddProduct from "./components/Admin/AddProduct";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Dashboard />
+          </Route>
+          <Route exact path="/addproduct">
+            <AddProduct />
           </Route>
           <Redirect to="/admin/404" />
         </Switch>
