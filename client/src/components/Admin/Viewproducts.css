@@ -1,0 +1,11 @@
+.product_component {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin: 20px;
+    padding: 0px 40px;
+  }
+  .product_btn{
+    margin-top: 300;
+    position: fixied;
+  }

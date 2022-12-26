@@ -12,6 +12,12 @@ import {
   Select,
 } from "@mui/material";
 import { useHistory } from "react-router";
+import Collapse from "@mui/material/Collapse";
+import MuiAlert from "@mui/material/Alert";
+
+// const Alert = React.forwardRef(function Alert(props, ref) {
+//   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+// });
 
 export default function AddProduct() {
   const [productID, setproductID] = useState("");
@@ -20,12 +26,26 @@ export default function AddProduct() {
   const [subcategory, setsubcategory] = useState("");
   const [price, setprice] = useState("");
   const [sampleImage, setsampleImage] = useState("");
-
+  const [showError, setshowError] = useState(false);
   const API = process.env.REACT_APP_API;
   const history = useHistory();
 
   //using axios send product details to api
-  const sendProductToAPI = () => {
+  const sendProductToAPI = (e) => {
+    // e.preventDefault();
+    // if (
+    //   productID == null ||
+    //   productName == null ||
+    //   category == null ||
+    //   subcategory == null ||
+    //   price == null
+    // ) {
+    //   setshowError(true);
+    //   setTimeout(() => {
+    //     setshowError(false);
+    //   }, 3000);
+    //   return;
+    // }
     Axios.post(`${API}api/v1/product`, {
       productID,
       productName,
@@ -50,6 +70,22 @@ export default function AddProduct() {
       <div className="form_frame">
         <div className="Product_details">
           <div className="Product_details__title">
+            {/* <Collapse in={showError}>
+              <Alert
+                hidden
+                severity="error"
+                variant="outlined"
+                sx={{
+                  width: "52%",
+                  marginTop: "1rem",
+                  marginLeft: "22rem",
+                  vertical: "top",
+                  horizontal: "center",
+                }}
+              >
+                Error, please filled the required details!
+              </Alert>
+            </Collapse> */}
             <h1>Product Registration</h1>
             <div>
               <br />

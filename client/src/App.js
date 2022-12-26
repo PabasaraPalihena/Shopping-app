@@ -9,6 +9,7 @@ import Header from "./components/view/Header";
 import Footer from "./components/view/Footer";
 import Dashboard from "./components/Admin/Dashboard";
 import AddProduct from "./components/Admin/AddProduct";
+import Products from "./components/Admin/Products";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path="/addproduct">
             <AddProduct />
+          </Route>
+          <Route exact path="/allproducts">
+            <Products />
           </Route>
           <Redirect to="/admin/404" />
         </Switch>
