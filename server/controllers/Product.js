@@ -1,59 +1,59 @@
 const Product = require("../models/Product");
 
-//@desc Add product
-//@route POST /api/v1/product
-//@access Public
-exports.addProduct = async (req, res) => {
-  const {
-    productID,
-    productName,
-    category,
-    price,
-    subcategory,
-    qty,
-    sampleImages,
-  } = req.body;
-  try {
-    const product = await Product.create({
-      productID,
-      productName,
-      category,
-      subcategory,
-      price,
-      qty,
-      sampleImages,
-    });
-    return res.status(201).json({
-      success: true,
-      data: product,
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      success: false,
-      error: "Server error",
-    });
-  }
-};
-
 // //@desc Add product
 // //@route POST /api/v1/product
 // //@access Public
 // exports.addProduct = async (req, res) => {
+//   const {
+//     productID,
+//     productName,
+//     category,
+//     price,
+//     subcategory,
+//     qty,
+//     sampleImages,
+//   } = req.body;
 //   try {
-//     const product = await Product.create(req.body);
-//     res.status(201).json({
+//     const product = await Product.create({
+//       productID,
+//       productName,
+//       category,
+//       subcategory,
+//       price,
+//       qty,
+//       sampleImages,
+//     });
+//     return res.status(201).json({
 //       success: true,
 //       data: product,
 //     });
 //   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({
+//     console.log(error);
+//     return res.status(500).json({
 //       success: false,
-//       msg: "Server error",
+//       error: "Server error",
 //     });
 //   }
 // };
+
+//@desc Add product
+//@route POST /api/v1/product
+//@access Public
+exports.addProduct = async (req, res) => {
+  try {
+    const product = await Product.create(req.body);
+    res.status(201).json({
+      success: true,
+      data: product,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      msg: "Server error",
+    });
+  }
+};
 
 //@desc   Get all products
 //@route  GET /api/v1/products
