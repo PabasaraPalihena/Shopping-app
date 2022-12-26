@@ -10,6 +10,7 @@ import Footer from "./components/view/Footer";
 import Dashboard from "./components/Admin/Dashboard";
 import AddProduct from "./components/Admin/AddProduct";
 import Products from "./components/Admin/Products";
+import UpdateProduct from "./components/Admin/UpdateProduct";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route exact path="/allproducts">
             <Products />
+          </Route>
+          <Route exact path="/editproduct">
+            <UpdateProduct />
           </Route>
           <Redirect to="/admin/404" />
         </Switch>

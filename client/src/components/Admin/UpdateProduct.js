@@ -11,21 +11,22 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 
-export default function AddProduct() {
-  const [productID, setproductID] = useState("");
-  const [productName, setproductName] = useState("");
-  const [category, setcategory] = useState("");
-  const [subcategory, setsubcategory] = useState("");
-  const [price, setprice] = useState("");
-  const [sampleImage, setsampleImage] = useState("");
-
+export default function UpdateProduct() {
+  const location = useLocation();
+  const [productID, setproductID] = useState(location.product.productID);
+  const [productName, setproductName] = useState(location.product.productName);
+  const [category, setcategory] = useState(location.product.category);
+  const [subcategory, setsubcategory] = useState(location.product.subcategory);
+  const [price, setprice] = useState(location.product.price);
+  const [sampleImage, setsampleImage] = useState(location.product.sampleImage);
+  const [qty, setqty] = useState(location.product.qty);
   const API = process.env.REACT_APP_API;
   const history = useHistory();
 
-  //using axios send product details to api
-  const sendProductToAPI = (e) => {
+  //using axios update product details
+  const sendupdatedProductToAPI = () => {
     // e.preventDefault();
     // if (
     //   productID == null ||
@@ -43,32 +44,38 @@ export default function AddProduct() {
     //   });
     //   return;
     // }
-    Axios.post(`${API}api/v1/product`, {
-      productID,
+    const data = {
       productName,
       category,
       subcategory,
       price,
-      qty: 0,
       sampleImage,
-    }).then((res) => {
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Your work has been saved",
-        showConfirmButton: false,
-        timer: 1500,
+      qty,
+    };
+
+    //update product details
+    Axios.put(`${API}api/v1/product/${location.product._id}`, data)
+      .then((res) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      //   history.push("/theaters");
-    });
   };
+
   return (
     // data form
     <div className="res_component">
       <div className="form_frame">
         <div className="Product_details">
           <div className="Product_details__title">
-            <h1>Product Registration</h1>
+            <h1>Product Details Update</h1>
             <div>
               <br />
 
@@ -83,6 +90,7 @@ export default function AddProduct() {
                     variant="outlined"
                     value={productID}
                     onChange={(e) => setproductID(e.target.value)}
+                    disabled
                   />
                 </FormControl>
               </div>
@@ -157,40 +165,27 @@ export default function AddProduct() {
               </div>
 
               <div className="Product_details__input">
+                <p>Available Qty</p>
+
+                <FormControl fullWidth>
+                  <TextField
+                    id="outlined-basic"
+                    className="Product_txt"
+                    label="quantity"
+                    variant="outlined"
+                    value={qty}
+                    onChange={(e) => setqty(e.target.value)}
+                  />
+                </FormControl>
+              </div>
+
+              <div className="Product_details__input">
                 <p>Upload image</p>
-
-                {/* <FileUpload value={sampleImage} onChange={setsampleImage} /> */}
-
-                {/* <input
-                  accept="image/*"
-                  style={{ display: "none" }}
-                  id="raised-button-file"
-                  type="file"
-                />
-                <label htmlFor="raised-button-file">
-                  <Button variant="raised" component="span" width="200px">
-                    Upload
-                  </Button>
-                </label>*/}
-
-                {/* <input
-                  className="img_btn"
-                  type="file"
-                  accept="image/*"
-                  onChange={onImageChange}
+                {/* <label
+                  onChange={(e) => {
+                    setsampleImage(e.target.files[0].name);
+                  }}
                 /> */}
-
-                {/* {sampleImage && (
-                  <div>
-                    <img
-                      alt="not fount"
-                      width={"200px"}
-                      src={URL.createObjectURL(sampleImage)}
-                    />
-                  </div>
-                )}
-                <br /> */}
-
                 <br />
                 <br />
 
@@ -222,9 +217,9 @@ export default function AddProduct() {
                       height: "40px",
                       margin: "20px 0px 0px 100px",
                     }}
-                    onClick={sendProductToAPI}
+                    onClick={sendupdatedProductToAPI}
                   >
-                    Register
+                    Update
                   </Button>
                   <br />
                 </FormControl>

@@ -10,6 +10,10 @@ import "../components/Admin/Viewproducts.css";
 
 export default function MediaCard({ product, btn1, btn2, image }) {
   const history = useHistory();
+
+  const updateproduct = () => {
+    history.push({ pathname: "/editproduct", product });
+  };
   return (
     <Card sx={{ maxWidth: 200, minWidth: 190 }}>
       <CardMedia
@@ -24,21 +28,31 @@ export default function MediaCard({ product, btn1, btn2, image }) {
         </Typography>
         <Typography
           variant="body2"
-          color="text.secondary"
+          color="#ff7961"
           style={{ textAlign: "left" }}
         >
           {"Rs." + product.price}
+        </Typography>
+        <br />
+        <Typography
+          variant="body4"
+          color="#64dd17"
+          style={{ textAlign: "left" }}
+        >
+          {"Available Qty : " + product.qty}
         </Typography>
       </CardContent>
       <CardActions>
         <Button
           size="small"
-          onClick={() => history.push("/student/creategroup")}
+          // onClick={() => history.push("/student/creategroup")}
           style={{ color: "green" }}
         >
           {btn1}
         </Button>
-        <Button size="small">{btn2}</Button>
+        <Button size="small" onClick={() => updateproduct()}>
+          {btn2}
+        </Button>
       </CardActions>
     </Card>
   );
