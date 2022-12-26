@@ -9,7 +9,8 @@ const app = express();
 app.use(cors({ origin: "*" }));
 
 //Body parser
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb" }));
 
 //listen for request
 const PORT = process.env.PORT || 5005;

@@ -11,7 +11,6 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import FileUpload from "react-material-file-upload";
 import { useHistory } from "react-router";
 
 export default function AddProduct() {
@@ -20,7 +19,6 @@ export default function AddProduct() {
   const [category, setcategory] = useState("");
   const [subcategory, setsubcategory] = useState("");
   const [price, setprice] = useState("");
-  //   const [productSize, setproductSize] = useState("");
   const [sampleImage, setsampleImage] = useState("");
 
   const API = process.env.REACT_APP_API;
@@ -160,7 +158,7 @@ export default function AddProduct() {
 
                 {/* <FileUpload value={sampleImage} onChange={setsampleImage} /> */}
 
-                <input
+                {/* <input
                   accept="image/*"
                   style={{ display: "none" }}
                   id="raised-button-file"
@@ -170,9 +168,48 @@ export default function AddProduct() {
                   <Button variant="raised" component="span" width="200px">
                     Upload
                   </Button>
-                </label>
-              </div>
+                </label>*/}
 
+                {/* <input
+                  className="img_btn"
+                  type="file"
+                  accept="image/*"
+                  onChange={onImageChange}
+                /> */}
+
+                {/* {sampleImage && (
+                  <div>
+                    <img
+                      alt="not fount"
+                      width={"200px"}
+                      src={URL.createObjectURL(sampleImage)}
+                    />
+                  </div>
+                )}
+                <br /> */}
+
+                <br />
+                <br />
+
+                <input
+                  id="contained-button-file"
+                  type="file"
+                  accept="image/*"
+                  onChange={(event) => {
+                    console.log(event.target.files[0].name);
+                    // Get a reference to the file
+                    const file = event.target.files[0];
+                    // Encode the file using the FileReader API
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                      // Logs data:<type>;base64,wL2dvYWwgbW9yZ...
+                      setsampleImage(reader.result);
+                      console.log(reader.result);
+                    };
+                    reader.readAsDataURL(file);
+                  }}
+                />
+              </div>
               <div className="res_details__input">
                 <FormControl fullWidth>
                   <Button

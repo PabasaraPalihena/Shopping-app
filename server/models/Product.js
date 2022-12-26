@@ -25,10 +25,9 @@ const Product = new Schema({
   // productSize: {
   //   type: String,
   // },
-  // sampleImage: {
-  //   type: String,
-  //   default: "no-photo.jpg",
-  // },
+  sampleImage: {
+    type: String,
+  },
 });
 const product = mongoose.model("Product", Product);
 module.exports = product;
