@@ -52,7 +52,7 @@ export default function Header({ title }) {
               </Button>
             </div>
           </div>
-          <div className="header__right">
+          {/* <div className="header__right">
             <Button
               variant="contained"
               style={{
@@ -64,7 +64,7 @@ export default function Header({ title }) {
             >
               click
             </Button>
-          </div>
+          </div> */}
         </div>
       </header>
     </>
