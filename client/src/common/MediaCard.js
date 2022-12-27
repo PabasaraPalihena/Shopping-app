@@ -24,6 +24,9 @@ export default function MediaCard({ product, btn1, btn2, image }) {
       setproducts(res.data.data);
     });
   };
+  useEffect(() => {
+    getAllTProducts();
+  }, []);
 
   //delete products
   const deleteproduct = (id) => {
