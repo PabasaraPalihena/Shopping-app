@@ -1,10 +1,10 @@
 .Product_details {
     /* background-color: aqua; */
-    min-width: 60%;
+    min-width: 70%;
   }
   .Product_details h1 {
     font-size: 25px;
-    margin-left: 200px;
+    margin-left: 180px;
   }
   .Product_txt{
     margin: 1;
