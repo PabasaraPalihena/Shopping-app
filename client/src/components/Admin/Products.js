@@ -90,8 +90,8 @@ export default function Products() {
                 <Card
                   key={product._id.toString()}
                   product={product}
-                  btn1="buy"
-                  btn2="update"
+                  btn1="update"
+                  btn2="delete"
                 />
               );
             })}

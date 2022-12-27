@@ -6,13 +6,50 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
+import Axios from "axios";
 import "../components/Admin/Viewproducts.css";
+const API = process.env.REACT_APP_API;
 
 export default function MediaCard({ product, btn1, btn2, image }) {
   const history = useHistory();
-
+  const [products, setproducts] = useState([]);
   const updateproduct = () => {
     history.push({ pathname: "/editproduct", product });
+  };
+
+  //get all products from the database
+  const getAllTProducts = () => {
+    Axios.get(`${API}api/v1/product/`).then((res) => {
+      setproducts(res.data.data);
+    });
+  };
+
+  //delete products
+  const deleteproduct = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Axios.delete(`${API}api/v1/product/${id}`).then((res) => {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          getAllTProducts();
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        });
+      }
+    });
   };
   return (
     <Card sx={{ maxWidth: 200, minWidth: 190 }}>
@@ -45,12 +82,12 @@ export default function MediaCard({ product, btn1, btn2, image }) {
       <CardActions>
         <Button
           size="small"
-          // onClick={() => history.push("/student/creategroup")}
+          onClick={() => updateproduct()}
           style={{ color: "green" }}
         >
           {btn1}
         </Button>
-        <Button size="small" onClick={() => updateproduct()}>
+        <Button size="small" onClick={() => deleteproduct(product._id)}>
           {btn2}
         </Button>
       </CardActions>
