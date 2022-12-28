@@ -11,27 +11,27 @@ import Axios from "axios";
 import "../components/Admin/Viewproducts.css";
 const API = process.env.REACT_APP_API;
 
-export default function MediaCard({ product, btn1, btn2, image }) {
+export default function MediaCard({ product, btn1, btn2 }) {
   const history = useHistory();
   const [products, setproducts] = useState([]);
   const updateproduct = () => {
     history.push({ pathname: "/editproduct", product });
   };
 
-  //get all products from the database
-  const getAllTProducts = () => {
-    Axios.get(`${API}api/v1/product/`).then((res) => {
-      setproducts(res.data.data);
-    });
-  };
-  useEffect(() => {
-    getAllTProducts();
-  }, []);
+  // //get all products from the database
+  // const getAllTProducts = () => {
+  //   Axios.get(`${API}api/v1/product/`).then((res) => {
+  //     setproducts(res.data.data);
+  //   });
+  // };
+  // useEffect(() => {
+  //   getAllTProducts();
+  // }, []);
 
-  //refersh
-  const refresh = () => {
-    history.push("/allproducts");
-  };
+  // //refersh
+  // const refresh = () => {
+  //   history.push("/allproducts");
+  // };
 
   //delete products
   const deleteproduct = (id) => {
@@ -54,7 +54,7 @@ export default function MediaCard({ product, btn1, btn2, image }) {
             timer: 1500,
           });
           // getAllTProducts();
-          refresh();
+          // refresh();
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         });
       }
