@@ -28,6 +28,11 @@ export default function MediaCard({ product, btn1, btn2, image }) {
     getAllTProducts();
   }, []);
 
+  //refersh
+  const refresh = () => {
+    history.push("/allproducts");
+  };
+
   //delete products
   const deleteproduct = (id) => {
     Swal.fire({
@@ -48,7 +53,8 @@ export default function MediaCard({ product, btn1, btn2, image }) {
             showConfirmButton: false,
             timer: 1500,
           });
-          getAllTProducts();
+          // getAllTProducts();
+          refresh();
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         });
       }

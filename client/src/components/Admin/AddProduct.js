@@ -159,27 +159,6 @@ export default function AddProduct() {
               <div className="Product_details__input">
                 <p>Upload image</p>
 
-                {/* <FileUpload value={sampleImage} onChange={setsampleImage} /> */}
-
-                {/* <input
-                  accept="image/*"
-                  style={{ display: "none" }}
-                  id="raised-button-file"
-                  type="file"
-                />
-                <label htmlFor="raised-button-file">
-                  <Button variant="raised" component="span" width="200px">
-                    Upload
-                  </Button>
-                </label>*/}
-
-                {/* <input
-                  className="img_btn"
-                  type="file"
-                  accept="image/*"
-                  onChange={onImageChange}
-                /> */}
-
                 {/* {sampleImage && (
                   <div>
                     <img
